@@ -8,7 +8,7 @@ interface FooterProps {}
 export const Footer: FC<FooterProps> = ({}) => {
   return (
     <footer className="flex gap-1 justify-between py-5 font-medium text-lg">
-      <Link to={ROUTES.HOME} className="text-xl">
+      <Link to={ROUTES.HOME} className="text-xl hover:text-red-500">
         React Crypto
       </Link>
       <div>
@@ -16,7 +16,7 @@ export const Footer: FC<FooterProps> = ({}) => {
         <a
           href="https://github.com/anovic123"
           target="_blank"
-          className="text-red-500 font-bold text-xl"
+          className="text-red-500 font-bold text-xl hover:underline"
         >
           anovic
         </a>
