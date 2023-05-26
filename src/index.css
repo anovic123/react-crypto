@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-gradient-to-b from-[#0F172A] to-[#161F3E] text-white;
+}
+
+a:hover {
+  @apply underline;
+}

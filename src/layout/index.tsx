@@ -1,0 +1,17 @@
+import { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Footer } from './footer';
+
+interface LayoutProps {}
+
+export const Layout: FC<LayoutProps> = () => {
+  return (
+    <div className="flex h-[100vh] flex-col max-w-7xl m-auto">
+      {/* Header */}
+      <main className="grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
