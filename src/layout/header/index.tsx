@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({}) => {
           <li key={`headerLink-${v1()}`} onClick={() => setActiveLink(el.path)}>
             <NavLink
               to={el.path}
-              className={`text-lg ${
+              className={`text-lg ease-in duration-300 hover:text-red-500 hover:border-b-2 hover:border-red-500 ${
                 activeLink === el.path ? 'text-red-500 border-b-2 border-red-500' : 'text-white'
               }`}
             >
