@@ -6,6 +6,7 @@ import { Layout } from './layout';
 
 import { DetailsPage } from './pages/details';
 import { HomePage } from './pages/home';
+import { NewsPage } from './pages/news';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,6 +21,7 @@ export const App: FC<AppProps> = ({}) => {
         <Route element={<Layout />}>
           <Route path={ROUTES.HOME} element={<HomePage />} />
           <Route path={ROUTES.DETAILS} element={<DetailsPage />} />
+          <Route path={ROUTES.NEWS} element={<NewsPage />} />
         </Route>
       </Routes>
       <div className="background-animation">

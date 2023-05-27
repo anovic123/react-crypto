@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
 import { AiOutlineCopy } from 'react-icons/ai';
 
-import { useGetDetailsDataQuery } from '../api';
+import { useGetDetailsDataQuery } from '../api/coinApi';
 
 import { AreaDetailsChart } from '../components/area-details-chart';
 import { Button } from '../components/ui-kit/button';
@@ -22,7 +22,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
 
   const { data, isLoading, isError } = useGetDetailsDataQuery(id);
 
-  console.log('🚀 ~ file: details.tsx:12 ~ data:', data);
+  // console.log('🚀 ~ file: details.tsx:12 ~ data:', data);
 
   const createMarkup = (html: string) => ({ __html: html });
 
@@ -109,7 +109,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           <div className="flex items-center gap-3 text-xl mb-3">
             <div>Api id</div>
             <Button
-              endIcon={<AiOutlineCopy onClick={() => copyToClipboard(data?.id || '')} />}
+              endIcon={<AiOutlineCopy />}
               onClick={() => copyToClipboard(data?.id || '')}
               btnStyle="PRIMARY"
             >
@@ -123,7 +123,9 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
               {data?.links?.homepage
                 .filter((el) => el.length > 1)
                 .map((el: string) => (
-                  <Button key={el} onClick={() => window.open(el, '_blank')}>{el}</Button>
+                  <Button key={el} onClick={() => window.open(el, '_blank')}>
+                    {el}
+                  </Button>
                 ))}
             </div>
           </div>

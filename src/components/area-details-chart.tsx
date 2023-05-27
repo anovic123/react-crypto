@@ -13,7 +13,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
-import { useGetMarketChartQuery } from '../api';
+import { useGetMarketChartQuery } from '../api/coinApi';
 
 ChartJS.register(
   CategoryScale,
