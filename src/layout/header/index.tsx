@@ -14,7 +14,7 @@ export const Header: FC<HeaderProps> = ({}) => {
 
   return (
     <header className="flex gap-5 justify-between py-5">
-      <Link to={ROUTES.HOME} className="font-semibold text-2xl">
+      <Link to={ROUTES.HOME} className="font-semibold text-2xl hover:text-red-500">
         React Crypto
       </Link>
       <ul className="flex gap-5 flex-wrap">

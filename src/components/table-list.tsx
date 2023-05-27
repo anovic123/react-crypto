@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { TopDataType } from '../common/types/get-top-data';
 
@@ -10,6 +11,8 @@ interface TableListProps {
 }
 
 export const TableList: FC<TableListProps> = ({ data }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col mt-9 border-gray-100 rounded">
       {data?.length === 0 ? (
@@ -30,13 +33,19 @@ export const TableList: FC<TableListProps> = ({ data }) => {
               <tr
                 key={el.id}
                 className="text-center text-base border-b ease-in duration-300 border-gray-100 hover:bg-[#e6e6e7] hover:text-black cursor-pointer last:border-b-0"
+                onClick={() => navigate(`details/${el.id}`)}
               >
                 <td className="py-4 flex gap-5 items-center justify-center uppercase">
                   <img src={el.image} alt={el.symbol} width={30} height={30} />
                   <span>{el.symbol}</span>
                 </td>
                 <td className="py-4">{el.name}</td>
-                <td className="py-4">{el.current_price} $</td>
+                <td className="py-4">
+                  {new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  }).format(el.current_price)}
+                </td>
                 <td className="py-4">{el.total_volume}</td>
                 <td className="py-4 font-bold flex gap-5 items-center justify-center">
                   {el.market_cap_change_percentage_24h > 0 ? (
