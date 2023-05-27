@@ -12,8 +12,7 @@ export const HomePage: FC<HomePageProps> = ({}) => {
 
   return (
     <section>
-      <h2 className="font-bold text-2xl">Цены на криптовалюты по рыночной капитализации</h2>
-      <TableList data={data} />
+      <TableList title="Cryptocurrency prices by market capitalization" data={data} />
     </section>
   );
 };

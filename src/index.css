@@ -218,4 +218,9 @@
 .details-description > a {
   text-decoration: underline;
   color: red;
+  transition: all 0.3s ease 0s;
+}
+
+.details-description > a:hover {
+  color: hotpink;
 }

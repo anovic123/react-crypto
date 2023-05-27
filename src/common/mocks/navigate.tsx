@@ -1,18 +1,18 @@
 export const headerLinks = [
   {
-    title: 'Главная',
+    title: 'Main',
     path: '/',
   },
   {
-    title: 'Популярное',
+    title: 'Trending',
     path: '/popular',
   },
   {
-    title: 'Новости',
+    title: 'News',
     path: '/news',
   },
   {
-    title: 'Список желаний',
+    title: 'Favorite',
     path: '/wish-list',
   },
 ];

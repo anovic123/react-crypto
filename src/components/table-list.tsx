@@ -8,13 +8,15 @@ import TrendDown from '../assets/images/chart/trend-down.svg';
 
 interface TableListProps {
   data?: TopDataType[];
+  title: string;
 }
 
-export const TableList: FC<TableListProps> = ({ data }) => {
+export const TableList: FC<TableListProps> = ({ data, title }) => {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col mt-9 border-gray-100 rounded">
+      <h1 className="font-bold text-3xl mb-5">{title}</h1>
       {data?.length === 0 ? (
         <p className="text-center py-4">Нет данных для отображения</p>
       ) : (

@@ -1,10 +1,13 @@
 import { FC } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { Layout } from './layout';
-import { DetailsPage } from './pages/details';
 
+import { DetailsPage } from './pages/details';
 import { HomePage } from './pages/home';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ROUTES } from './utils/router';
 
@@ -24,6 +27,17 @@ export const App: FC<AppProps> = ({}) => {
         <div id="ball-two"></div>
         <div id="ball-three"></div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
   );
 };

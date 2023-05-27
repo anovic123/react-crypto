@@ -14,7 +14,11 @@ export const Header: FC<HeaderProps> = ({}) => {
 
   return (
     <header className="flex gap-5 justify-between py-5">
-      <Link to={ROUTES.HOME} className="font-semibold text-2xl hover:text-red-500">
+      <Link
+        to={ROUTES.HOME}
+        className="font-semibold text-3xl hover:text-red-500"
+        onClick={() => setActiveLink('/')}
+      >
         React Crypto
       </Link>
       <ul className="flex gap-5 flex-wrap">
@@ -22,7 +26,7 @@ export const Header: FC<HeaderProps> = ({}) => {
           <li key={`headerLink-${v1()}`} onClick={() => setActiveLink(el.path)}>
             <NavLink
               to={el.path}
-              className={`text-lg ease-in duration-300 hover:text-red-500 hover:border-b-2 hover:border-red-500 ${
+              className={`text-[1.27rem] ease-in duration-300 hover:text-red-500 hover:border-b-2 hover:border-red-500 ${
                 activeLink === el.path ? 'text-red-500 border-b-2 border-red-500' : 'text-white'
               }`}
             >

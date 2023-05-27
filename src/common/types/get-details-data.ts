@@ -16,6 +16,7 @@ export interface DetailsDataType {
   description: Description
   links: Links
   image: Image
+  contract_address: string
   country_origin: string
   genesis_date: string
   sentiment_votes_up_percentage: number
