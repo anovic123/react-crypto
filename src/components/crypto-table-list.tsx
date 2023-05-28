@@ -8,19 +8,19 @@ import { formatCurrency } from '../utils/formatCurrency';
 import TrendUp from '../assets/images/chart/trend-up.svg';
 import TrendDown from '../assets/images/chart/trend-down.svg';
 
-interface TableListProps {
+interface CryptoTableListProps {
   data?: TopDataType[];
   title: string;
 }
 
-export const TableList: FC<TableListProps> = ({ data, title }) => {
+export const CryptoTableList: FC<CryptoTableListProps> = ({ data, title }) => {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col mt-9 border-gray-100 rounded">
       <h1 className="font-bold text-3xl mb-5">{title}</h1>
       {data?.length === 0 ? (
-        <p className="text-center py-4">Нет данных для отображения</p>
+        <p className="text-center py-4">No data to display</p>
       ) : (
         <table className="w-full table-auto">
           <thead className="capitalize text-base text-gray-100 font-medium border-b border-t border-gray-100">

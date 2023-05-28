@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { useGetTopPriceDataQuery } from '../api/coinApi';
 
-import { TableList } from '../components/table-list';
+import { CryptoTableList } from '../components/crypto-table-list';
 
 interface HomePageProps {}
 
@@ -11,7 +11,7 @@ export const HomePage: FC<HomePageProps> = ({}) => {
 
   return (
     <section>
-      <TableList title="Cryptocurrency prices by market capitalization" data={data} />
+      <CryptoTableList title="Cryptocurrency prices by market capitalization" data={data} />
     </section>
   );
 };

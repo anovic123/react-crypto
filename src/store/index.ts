@@ -5,7 +5,7 @@ import { newsApi } from '../api/newsApi';
 const store = configureStore({
   reducer: {
     [coinsApi.reducerPath]: coinsApi.reducer,
-    [newsApi.reducerPath]: newsApi.reducer
+    [newsApi.reducerPath]: newsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coinsApi.middleware, newsApi.middleware),
 })

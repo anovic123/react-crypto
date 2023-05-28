@@ -12,6 +12,7 @@ import { Button } from '../components/ui-kit/button';
 import { formatCurrency } from '../utils/formatCurrency';
 
 import { toast } from 'react-toastify';
+import { PriceRange } from '../components/price-range';
 
 interface DetailsPageProps {}
 
@@ -135,6 +136,13 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mb-5 w-[50%]">
+        <PriceRange
+          price={Number(data?.market_data?.current_price?.usd)}
+          high={Number(data?.market_data?.high_24h?.usd)}
+          low={Number(data?.market_data?.low_24h?.usd)}
+        />
       </div>
       <AreaDetailsChart id={id} />
       {data?.description?.en && (
