@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { TopDataType } from '../common/types/get-top-data';
 
+import { formatCurrency } from '../utils/formatCurrency';
+
 import TrendUp from '../assets/images/chart/trend-up.svg';
 import TrendDown from '../assets/images/chart/trend-down.svg';
 
@@ -23,48 +25,45 @@ export const TableList: FC<TableListProps> = ({ data, title }) => {
         <table className="w-full table-auto">
           <thead className="capitalize text-base text-gray-100 font-medium border-b border-t border-gray-100">
             <tr>
-              <th className="py-2">Название</th>
-              <th className="py-2">Монета</th>
-              <th className="py-2">Цена</th>
-              <th className="py-2">Общий объем</th>
-              <th className="py-2">Изменение</th>
+              <th className="py-2">Asset</th>
+              <th className="py-2">Name</th>
+              <th className="py-2">Price</th>
+              <th className="py-2">Total Volume</th>
+              <th className="py-2">Market Cap Change</th>
             </tr>
           </thead>
           <tbody>
-            {data?.map((el) => (
-              <tr
-                key={el.id}
-                className="text-center text-base border-b ease-in duration-300 border-gray-100 hover:bg-[#e6e6e7] hover:text-black cursor-pointer last:border-b-0"
-                onClick={() => navigate(`details/${el.id}`)}
-              >
-                <td className="py-4 flex gap-5 items-center justify-center uppercase">
-                  <img src={el.image} alt={el.symbol} width={30} height={30} />
-                  <span>{el.symbol}</span>
-                </td>
-                <td className="py-4">{el.name}</td>
-                <td className="py-4">
-                  {new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                  }).format(el.current_price)}
-                </td>
-                <td className="py-4">{el.total_volume}</td>
-                <td className="py-4 font-bold flex gap-5 items-center justify-center">
-                  {el.market_cap_change_percentage_24h > 0 ? (
-                    <img src={TrendUp} alt="TrendUp" width={23} height={23} />
-                  ) : (
-                    <img src={TrendDown} alt="TrendDown" width={23} height={23} />
-                  )}
-                  <span
-                    style={{
-                      color: `${el.market_cap_change_percentage_24h > 0 ? '#18cc24' : '#e00909'}`,
-                    }}
-                  >
-                    {Number(el.market_cap_change_percentage_24h).toFixed(2)} %
-                  </span>
-                </td>
-              </tr>
-            ))}
+            {data
+              ?.filter((el) => el.current_price > 0.01)
+              ?.map((el) => (
+                <tr
+                  key={el.id}
+                  className="text-center text-base border-b ease-in duration-300 border-gray-100 hover:bg-[#e6e6e7] hover:text-black cursor-pointer last:border-b-0"
+                  onClick={() => navigate(`details/${el.id}`)}
+                >
+                  <td className="py-4 flex gap-5 items-center justify-center uppercase">
+                    <img src={el.image} alt={el.symbol} width={30} height={30} />
+                    <span>{el.symbol}</span>
+                  </td>
+                  <td className="py-4">{el.name}</td>
+                  <td className="py-4">{formatCurrency(el.current_price)}</td>
+                  <td className="py-4">{new Intl.NumberFormat().format(el.total_volume)}</td>
+                  <td className="py-4 font-bold flex gap-5 items-center justify-center">
+                    {el.market_cap_change_percentage_24h > 0 ? (
+                      <img src={TrendUp} alt="TrendUp" width={23} height={23} />
+                    ) : (
+                      <img src={TrendDown} alt="TrendDown" width={23} height={23} />
+                    )}
+                    <span
+                      style={{
+                        color: `${el.market_cap_change_percentage_24h > 0 ? '#18cc24' : '#e00909'}`,
+                      }}
+                    >
+                      {Number(el.market_cap_change_percentage_24h).toFixed(2)} %
+                    </span>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       )}

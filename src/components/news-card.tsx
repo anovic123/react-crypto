@@ -4,9 +4,9 @@ import { DataType } from '../common/types/get-top-news-data';
 
 import { formatDate } from '../utils/formatDate';
 
-interface CryptoCardProps extends DataType {}
+interface NewsCardProps extends DataType {}
 
-export const CryptoCard: FC<CryptoCardProps> = ({
+export const NewsCard: FC<NewsCardProps> = ({
   source_info,
   imageurl,
   tags,
@@ -14,9 +14,8 @@ export const CryptoCard: FC<CryptoCardProps> = ({
   published_on,
   body,
 }) => {
-  
   const parseStringToArray = (str: string) => {
-    const words = str.split('|').slice(1);
+    const words = str.split('|').slice(0, 5)
     return words.map((word, i) => (
       <Fragment key={i}>
         <span className="text-cyan-300 font-bold">{word.trim()}</span>
@@ -35,10 +34,12 @@ export const CryptoCard: FC<CryptoCardProps> = ({
         </div>
         <h2 className="font-bold text-xl cursor-pointer hover:text-red-500">{title}</h2>
         <p>{body.slice(0, 150)}...</p>
-        <div className="flex items-center gap-2">
-          <span className="text-lg text-orange-400 mr-1">Categories:</span>
-          <div>{parseStringToArray(tags)}</div>
-        </div>
+        {tags.length > 2 && (
+          <div className="flex items-center gap-2">
+            <span className="text-lg text-orange-400 mr-1">Categories:</span>
+            <div>{parseStringToArray(tags)}</div>
+          </div>
+        )}
       </div>
     </article>
   );

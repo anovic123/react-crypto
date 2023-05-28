@@ -2,12 +2,14 @@ import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
-import { AiOutlineCopy } from 'react-icons/ai';
+import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
 import { AreaDetailsChart } from '../components/area-details-chart';
 import { Button } from '../components/ui-kit/button';
+
+import { formatCurrency } from '../utils/formatCurrency';
 
 import { toast } from 'react-toastify';
 
@@ -22,7 +24,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
 
   const { data, isLoading, isError } = useGetDetailsDataQuery(id);
 
-  // console.log('🚀 ~ file: details.tsx:12 ~ data:', data);
+  console.log('🚀 ~ file: details.tsx:12 ~ data:', data);
 
   const createMarkup = (html: string) => ({ __html: html });
 
@@ -30,12 +32,6 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
     navigator.clipboard.writeText(text);
     toast.success('Successfully added to clipboard');
   };
-
-  const formatCurrency = (value: number) =>
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(value);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -122,11 +118,20 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             <div className="flex items-center gap-3">
               {data?.links?.homepage
                 .filter((el) => el.length > 1)
+                .slice(0, 2)
                 .map((el: string) => (
                   <Button key={el} onClick={() => window.open(el, '_blank')}>
                     {el}
                   </Button>
                 ))}
+            </div>
+          </div>
+
+          <div className="text-xl flex items-center gap-3">
+            <Button endIcon={<AiOutlineStar size={20} />}>Add to favorite</Button>
+            <div className="flex items-center gap-1 text-lg px-2 py-1 rounded-lg border">
+              <AiOutlineStar size={20} color="orange" />
+              on {data?.watchlist_portfolio_users} watchlists
             </div>
           </div>
         </div>

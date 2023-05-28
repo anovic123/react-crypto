@@ -32,7 +32,7 @@ export const Button: FC<ButtonProps> = ({
   endIcon,
   ...props
 }) => {
-  const btnClasses = clsx('text-center cursor-pointer rounded-md flex items-center gap-3', {
+  const btnClasses = clsx('text-center cursor-pointer rounded-md flex items-center gap-2', {
     'p-2 bg-slate-800 hover:underline': btnStyle === ButtonStyleEnum.PRIMARY,
   });
 
