@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go';
 import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
@@ -7,12 +8,12 @@ import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
 import { AreaDetailsChart } from '../components/area-details-chart';
+import { PriceRange } from '../components/price-range';
+import { Spinner } from '../components/spinner';
 import { Button } from '../components/ui-kit/button';
 
 import { formatCurrency } from '../utils/formatCurrency';
-
-import { toast } from 'react-toastify';
-import { PriceRange } from '../components/price-range';
+import { Error } from '../components/error';
 
 interface DetailsPageProps {}
 
@@ -23,9 +24,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
     return null;
   }
 
-  const { data, isLoading, isError } = useGetDetailsDataQuery(id);
-
-  console.log('🚀 ~ file: details.tsx:12 ~ data:', data);
+  const { data, isLoading, isError, error } = useGetDetailsDataQuery(id);
 
   const createMarkup = (html: string) => ({ __html: html });
 
@@ -35,16 +34,17 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   if (isError) {
-    return <p>Error occurred.</p>;
+    // @ts-ignore
+    return <Error message={error?.data?.error} />;
   }
 
   return (
-    <section className="mt-5">
-      <div className="mb-5 grid grid-cols-2 gap-5">
+    <section className="mt-5 h-full">
+      <div className="mb-1 flex justify-between gap-5">
         <div>
           <span className="bg-zinc-900 px-2 py-1 rounded-md">
             Rank #{data?.coingecko_rank || 0}
@@ -56,10 +56,10 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
               width={30}
               alt={data?.name}
             />
-            <h1 className="text-3xl font-bold">{data?.name}</h1>
+            <h1 className="text-4xl font-bold">{data?.name}</h1>
           </div>
           <div className="mb-3 flex items-center gap-5">
-            <span className="font-bold text-xl">
+            <span className="font-bold text-2xl">
               {formatCurrency(Number(data?.market_data?.current_price?.usd))}
             </span>
             {data?.market_data?.market_cap_change_percentage_24h && (
@@ -128,8 +128,15 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             </div>
           </div>
 
+          <div className="flex items-center gap-3 text-xl mb-3">
+            <div>CoinGecko Score:</div>
+            <span>{data?.coingecko_score.toFixed(2)}</span>
+          </div>
+
           <div className="text-xl flex items-center gap-3">
-            <Button endIcon={<AiOutlineStar size={20} />}>Add to favorite</Button>
+            <Button btnStyle="ORANGE" endIcon={<AiOutlineStar size={20} />}>
+              Add to favorite
+            </Button>
             <div className="flex items-center gap-1 text-lg px-2 py-1 rounded-lg border">
               <AiOutlineStar size={20} color="orange" />
               on {data?.watchlist_portfolio_users} watchlists
@@ -137,7 +144,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           </div>
         </div>
       </div>
-      <div className="mb-14 w-[50%]">
+      <div className="mb-14 w-[43%]">
         <PriceRange
           price={Number(data?.market_data?.current_price?.usd)}
           high={Number(data?.market_data?.high_24h?.usd)}

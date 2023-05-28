@@ -13,7 +13,10 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
+
 import { useGetMarketChartQuery } from '../api/coinApi';
+
+import { Error } from './error';
 
 ChartJS.register(
   CategoryScale,
@@ -33,7 +36,12 @@ interface AreaDetailsChartProps {
 export const AreaDetailsChart: FC<AreaDetailsChartProps> = ({ id }) => {
   const [days, setDays] = useState<number>(7);
 
-  const { data, isLoading, isError } = useGetMarketChartQuery({ id, days });
+  const { data, isError } = useGetMarketChartQuery({ id, days });
+
+  if (isError) {
+    // @ts-ignore
+    return <Error message={error?.data?.error} />;
+  }
 
   const options = {
     responsive: true,

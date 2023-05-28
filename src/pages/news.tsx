@@ -1,20 +1,22 @@
 import { FC } from 'react';
 
 import { useGetTopNewsDataQuery } from '../api/newsApi';
+
 import { NewsCard } from '../components/news-card';
+import { Spinner } from '../components/spinner';
+import { Error } from '../components/error';
 
 interface NewsPageProps {}
 
 export const NewsPage: FC<NewsPageProps> = ({}) => {
   const { data, isLoading, isError } = useGetTopNewsDataQuery();
-  console.log("🚀 ~ file: news.tsx:10 ~ data:", data)
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   if (isError) {
-    return <p>Error occurred.</p>;
+    return <Error message={data?.Message} />;
   }
 
   return (
