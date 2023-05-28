@@ -44,7 +44,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
 
   return (
     <section className="mt-5">
-      <div className="mb-10 grid grid-cols-2 gap-5">
+      <div className="mb-5 grid grid-cols-2 gap-5">
         <div>
           <span className="bg-zinc-900 px-2 py-1 rounded-md">
             Rank #{data?.coingecko_rank || 0}
@@ -137,7 +137,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           </div>
         </div>
       </div>
-      <div className="mb-5 w-[50%]">
+      <div className="mb-14 w-[50%]">
         <PriceRange
           price={Number(data?.market_data?.current_price?.usd)}
           high={Number(data?.market_data?.high_24h?.usd)}

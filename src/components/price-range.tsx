@@ -15,20 +15,22 @@ export const PriceRange: FC<PriceRangeProps> = ({ price, low, high }) => {
     setGreenWidth(Math.ceil(greenWidthPercent));
   }, [price, high, low]);
 
-  const redColorClass = 'bg-red-500';
-  const greenColorClass = 'bg-green-500';
-
   return (
     <div className="price-range-container w-full h-2 bg-gray-300 rounded">
       <div className="relative h-full">
         <div
-          className={`absolute left-0 top-0 h-full ${redColorClass} rounded-l`}
+          className={'absolute left-0 top-0 h-full bg-red-500 rounded-l'}
           style={{ width: `${100 - greenWidth}%` }}
         ></div>
         <div
-          className={`absolute right-0 top-0 h-full ${greenColorClass} rounded-r`}
+          className={'absolute right-0 top-0 h-full bg-green-500 ${greenColorClass} rounded-r'}
           style={{ width: `${greenWidth}%` }}
         ></div>
+      </div>
+      <div className="flex justify-between gap-3 mt-1">
+        <span>{low}</span>
+        <span>24H Range</span>
+        <span>{high}</span>
       </div>
     </div>
   );

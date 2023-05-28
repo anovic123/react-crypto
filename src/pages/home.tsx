@@ -8,6 +8,7 @@ interface HomePageProps {}
 
 export const HomePage: FC<HomePageProps> = ({}) => {
   const { data, isLoading, isError } = useGetTopPriceDataQuery();
+  console.log("🚀 ~ file: home.tsx:11 ~ data:", data)
 
   return (
     <section>
