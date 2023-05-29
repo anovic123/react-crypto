@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { TopDataType } from '../common/types/get-top-data';
@@ -7,19 +7,36 @@ import { formatCurrency } from '../utils/formatCurrency';
 
 import TrendUp from '../assets/images/chart/trend-up.svg';
 import TrendDown from '../assets/images/chart/trend-down.svg';
+import { Pagination } from './pagination';
 
 interface CryptoTableListProps {
   data?: TopDataType[];
   title: string;
 }
 
+const PAGE_SIZE = 13;
+
 export const CryptoTableList: FC<CryptoTableListProps> = ({ data, title }) => {
   const navigate = useNavigate();
+
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const totalPages = Math.ceil((data?.length || 0) / PAGE_SIZE);
+
+  const getCurrentPageData = () => {
+    const startIndex = (currentPage - 1) * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+    return data?.slice(startIndex, endIndex);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
       {/* <h1 className="font-bold text-3xl mb-5">{title}</h1> */}
-      <div className="flex flex-col mt-9 border border-gray-100 rounded-md">
+      <div className="flex flex-col mt-9 border pb-3 border-gray-100 rounded-md">
         {data?.length === 0 ? (
           <p className="text-center py-4">No data to display</p>
         ) : (
@@ -34,7 +51,7 @@ export const CryptoTableList: FC<CryptoTableListProps> = ({ data, title }) => {
               </tr>
             </thead>
             <tbody>
-              {data
+              {getCurrentPageData()
                 ?.filter((el) => el.current_price > 0.01)
                 ?.map((el) => (
                   <tr
@@ -70,6 +87,11 @@ export const CryptoTableList: FC<CryptoTableListProps> = ({ data, title }) => {
             </tbody>
           </table>
         )}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
     </>
   );

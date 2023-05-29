@@ -14,6 +14,11 @@ export const Layout: FC<LayoutProps> = () => {
         <Outlet />
       </main>
       <Footer />
+      <div className="background-animation">
+        <div id="ball-one"></div>
+        <div id="ball-two"></div>
+        <div id="ball-three"></div>
+      </div>
     </div>
   );
 };

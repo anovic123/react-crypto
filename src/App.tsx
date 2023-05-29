@@ -7,7 +7,6 @@ import { Layout } from './layout';
 import { DetailsPage } from './pages/details';
 import { HomePage } from './pages/home';
 import { NewsPage } from './pages/news';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ROUTES } from './utils/router';
@@ -24,11 +23,6 @@ export const App: FC<AppProps> = ({}) => {
           <Route path={ROUTES.NEWS} element={<NewsPage />} />
         </Route>
       </Routes>
-      <div className="background-animation">
-        <div id="ball-one"></div>
-        <div id="ball-two"></div>
-        <div id="ball-three"></div>
-      </div>
       <ToastContainer
         position="top-right"
         autoClose={5000}

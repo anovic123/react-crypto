@@ -15,7 +15,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   body,
 }) => {
   const parseStringToArray = (str: string) => {
-    const words = str.split('|').slice(0, 5)
+    const words = str.split('|').slice(0, 5);
     return words.map((word, i) => (
       <Fragment key={i}>
         <span className="text-cyan-300 font-bold">{word.trim()}</span>
@@ -33,7 +33,7 @@ export const NewsCard: FC<NewsCardProps> = ({
           <span>{formatDate(published_on)}</span>
         </div>
         <h2 className="font-bold text-xl cursor-pointer hover:text-red-500">{title}</h2>
-        <p>{body.slice(0, 150)}...</p>
+        <p>{body.length > 150 ? `${body.slice(0, 150)}...` : body}</p>
         {tags.length > 2 && (
           <div className="flex items-center gap-2">
             <span className="text-lg text-orange-400 mr-1">Categories:</span>

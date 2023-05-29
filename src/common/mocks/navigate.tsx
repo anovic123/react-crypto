@@ -5,7 +5,7 @@ export const headerLinks = [
   },
   {
     title: 'Trending',
-    path: '/popular',
+    path: '/trending',
   },
   {
     title: 'News',

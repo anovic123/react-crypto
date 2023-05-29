@@ -7,6 +7,7 @@ import { Error } from '../components/error';
 import { HomeBanner } from '../components/home-banner';
 import { Spinner } from '../components/spinner';
 
+
 interface HomePageProps {}
 
 export const HomePage: FC<HomePageProps> = ({}) => {
