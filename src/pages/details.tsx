@@ -10,19 +10,25 @@ import { useGetDetailsDataQuery } from '../api/coinApi';
 import { AreaChart, PriceRange, Spinner, Button, Error } from '../components';
 
 import { formatCurrency } from '../utils/formatCurrency';
+import { createMarkup } from '../utils/createMarkup';
+
+import { useAppDispatch } from '../hooks/redux';
+
+import { addFavorite } from '../store/slice/favorite';
 
 interface DetailsPageProps {}
 
 export const DetailsPage: FC<DetailsPageProps> = ({}) => {
   const { id } = useParams();
 
+  const dispatch = useAppDispatch();
+
   if (!id) {
     return null;
   }
 
   const { data, isLoading, isError, error } = useGetDetailsDataQuery(id);
-
-  const createMarkup = (html: string) => ({ __html: html });
+  console.log('🚀 ~ file: details.tsx:28 ~ data:', data);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -37,6 +43,22 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
     // @ts-ignore
     return <Error message={error?.data?.error} />;
   }
+
+  const onClickAdd = () => {
+    if (!data || !data.name || !data.market_data?.market_cap?.usd || !data.description?.en || !data.image?.thumb) {
+      return;
+    }
+  
+    const item = {
+      id: id,
+      title: data.name,
+      price: data.market_data.market_cap.usd,
+      description: data.description.en,
+      image: data.image.thumb,
+    };
+  
+    dispatch(addFavorite(item));
+  };
 
   return (
     <section className="mt-5 h-full">
@@ -130,7 +152,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           </div>
 
           <div className="text-xl flex items-center gap-3">
-            <Button btnStyle="ORANGE" endIcon={<AiOutlineStar size={20} />}>
+            <Button btnStyle="ORANGE" endIcon={<AiOutlineStar size={20} />} onClick={onClickAdd}>
               Add to favorite
             </Button>
             <div className="flex items-center gap-1 text-lg px-2 py-1 rounded-lg border">

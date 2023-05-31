@@ -13,6 +13,6 @@ export const headerLinks = [
   },
   {
     title: 'Favorite',
-    path: '/wish-list',
+    path: '/watch-list',
   },
 ];

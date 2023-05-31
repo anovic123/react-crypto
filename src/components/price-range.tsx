@@ -28,9 +28,9 @@ export const PriceRange: FC<PriceRangeProps> = ({ price, low, high }) => {
         ></div>
       </div>
       <div className="flex justify-between gap-3 mt-1 text-[1.1rem]">
-        <span>$ {low}</span>
+        <span>$ {low.toFixed(3)}</span>
         <span>24H Range</span>
-        <span>$ {high}</span>
+        <span>$ {high.toFixed(3)}</span>
       </div>
     </div>
   );

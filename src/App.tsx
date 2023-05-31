@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { Layout } from './layout';
 
-import { DetailsPage, HomePage, NewsPage, TrendingPage } from './pages';
+import { DetailsPage, HomePage, NewsPage, TrendingPage, WatchList } from './pages';
 
 import { ROUTES } from './utils/router';
 
@@ -21,6 +21,7 @@ export const App: FC<AppProps> = ({}) => {
           <Route path={ROUTES.DETAILS} element={<DetailsPage />} />
           <Route path={ROUTES.NEWS} element={<NewsPage />} />
           <Route path={ROUTES.TRENDING} element={<TrendingPage />} />
+          <Route path={ROUTES.WATCH_LIST} element={<WatchList />} />
         </Route>
       </Routes>
       <ToastContainer

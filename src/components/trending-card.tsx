@@ -41,7 +41,7 @@ export const TrendingCard: FC<TrendingCardProps> = ({ name, large, id }) => {
           {data?.market_data?.market_cap_change_percentage_24h.toFixed(2)} %
         </div>
       </div>
-      <div className="w-[200px] md:w-[350px]">
+      <div className="w-[12.5rem] md:w-[21.875rem]">
         <LineChart id={id} />
       </div>
     </div>
