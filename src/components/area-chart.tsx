@@ -29,11 +29,11 @@ ChartJS.register(
   Legend,
 );
 
-interface AreaDetailsChartProps {
+interface AreaChartProps {
   id: string;
 }
 
-export const AreaDetailsChart: FC<AreaDetailsChartProps> = ({ id }) => {
+export const AreaChart: FC<AreaChartProps> = ({ id }) => {
   const [days, setDays] = useState<number>(7);
 
   const { data, isError } = useGetMarketChartQuery({ id, days });
@@ -70,7 +70,7 @@ export const AreaDetailsChart: FC<AreaDetailsChartProps> = ({ id }) => {
     labels: data?.prices?.map((element: number[]): string => moment(element[0]).format('DD.MM.YY')),
     datasets: [
       {
-        label: 'Цена',
+        label: 'Price',
         data: data?.prices?.map((element: number[]): number => {
           return element[1] as number;
         }),

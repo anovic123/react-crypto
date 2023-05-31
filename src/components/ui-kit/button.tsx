@@ -51,7 +51,7 @@ export const Button: FC<ButtonProps> = ({
     'p-2 bg-slate-800 hover:underline rounded-md': btnStyle === ButtonStyleEnum.PRIMARY,
     'h-[3rem] bg-[#3861fb] px-5 text-lg hover:bg-[#2953f2] rounded-md transition: background-color 0.3s':
       btnStyle === ButtonStyleEnum.BLUE,
-    'bg-[#7b03fc] px-4 py-2 text-lg hover:bg-[#7b03fc] rounded-full transition: background-color 0.3s':
+    'bg-[#7b03fc] px-[0.6rem] py-[0.10rem] text-lg hover:bg-[#7b03fc] rounded-full transition: background-color 0.3s':
       btnStyle === ButtonStyleEnum.PURPLE && variant === ButtonVariantEnum.ROUNDED,
     'px-4 py-2 bg-red-500 rounded hover:bg-red-600 focus:bg-red-600':
       btnStyle === ButtonStyleEnum.RED,

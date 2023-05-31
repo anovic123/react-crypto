@@ -7,13 +7,13 @@ import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
-import { AreaDetailsChart } from '../components/area-details-chart';
+import { AreaChart } from '../components/area-chart';
 import { PriceRange } from '../components/price-range';
 import { Spinner } from '../components/spinner';
 import { Button } from '../components/ui-kit/button';
+import { Error } from '../components/error';
 
 import { formatCurrency } from '../utils/formatCurrency';
-import { Error } from '../components/error';
 
 interface DetailsPageProps {}
 
@@ -151,7 +151,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           low={Number(data?.market_data?.low_24h?.usd)}
         />
       </div>
-      <AreaDetailsChart id={id} />
+      <AreaChart id={id} />
       {data?.description?.en && (
         <p
           className="details-description"

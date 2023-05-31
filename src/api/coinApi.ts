@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { GetDetailsDataResponse } from "../common/types/get-details-data";
 import { GetMarketChartResponse } from "../common/types/get-market-chart";
 import { GetTopDataResponse } from "../common/types/get-top-data";
+import { GetTrendingResponse } from "../common/types/get-trending-data";
 
 import { config } from "../core/config";
 
@@ -19,6 +20,9 @@ export const coinsApi = createApi({
     getMarketChart: builder.query<GetMarketChartResponse, { id: string; days: number }>({
       query: ({id, days}) => `/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
     }),
+    getTrendingData: builder.query<GetTrendingResponse, void>({
+      query: () => `/search/trending`
+    })
   })
 })
 
@@ -26,4 +30,5 @@ export const {
   useGetTopPriceDataQuery,
   useGetDetailsDataQuery,
   useGetMarketChartQuery,
+  useGetTrendingDataQuery,
 } = coinsApi;

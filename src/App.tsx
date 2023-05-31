@@ -7,9 +7,11 @@ import { Layout } from './layout';
 import { DetailsPage } from './pages/details';
 import { HomePage } from './pages/home';
 import { NewsPage } from './pages/news';
-import 'react-toastify/dist/ReactToastify.css';
+import { TrendingPage } from './pages/trending';
 
 import { ROUTES } from './utils/router';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 interface AppProps {}
 
@@ -21,6 +23,7 @@ export const App: FC<AppProps> = ({}) => {
           <Route path={ROUTES.HOME} element={<HomePage />} />
           <Route path={ROUTES.DETAILS} element={<DetailsPage />} />
           <Route path={ROUTES.NEWS} element={<NewsPage />} />
+          <Route path={ROUTES.TRENDING} element={<TrendingPage />} />
         </Route>
       </Routes>
       <ToastContainer

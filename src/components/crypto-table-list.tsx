@@ -5,13 +5,14 @@ import { TopDataType } from '../common/types/get-top-data';
 
 import { formatCurrency } from '../utils/formatCurrency';
 
+import { Pagination } from './pagination';
+
 import TrendUp from '../assets/images/chart/trend-up.svg';
 import TrendDown from '../assets/images/chart/trend-down.svg';
-import { Pagination } from './pagination';
 
 interface CryptoTableListProps {
   data?: TopDataType[];
-  title: string;
+  title?: string;
 }
 
 const PAGE_SIZE = 13;
