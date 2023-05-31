@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
-import { Spinner } from '../components/spinner';
-import { TrendingCard } from '../components/trending-card';
+import { Spinner, TrendingCard } from '../components';
 
 import { useGetTrendingDataQuery } from '../api/coinApi';
 

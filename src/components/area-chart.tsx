@@ -16,7 +16,7 @@ import moment from 'moment';
 
 import { useGetMarketChartQuery } from '../api/coinApi';
 
-import { Error } from './error';
+import { Error } from './';
 
 ChartJS.register(
   CategoryScale,
@@ -38,10 +38,10 @@ export const AreaChart: FC<AreaChartProps> = ({ id }) => {
 
   const { data, isError } = useGetMarketChartQuery({ id, days });
 
-  if (isError) {
-    // @ts-ignore
-    return <Error message={error?.data?.error} />;
-  }
+  // if (isError) {
+  //   // @ts-ignore
+  //   return <Error message={error?.data?.error} />;
+  // }
 
   const options = {
     responsive: true,

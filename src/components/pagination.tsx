@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 
-import { Button } from './ui-kit/button';
+import { Button } from './';
 
 interface PaginationProps {
   currentPage: number;

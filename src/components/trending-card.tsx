@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
-import { LineChart } from './line-chart';
-import { Spinner } from './spinner';
+import { LineChart, Spinner } from './';
 
 import { formatCurrency } from '../utils/formatCurrency';
 

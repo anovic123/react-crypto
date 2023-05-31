@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from './ui-kit/button';
+import { Button } from './';
 
 import { ROUTES } from '../utils/router';
 

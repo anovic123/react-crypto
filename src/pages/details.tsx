@@ -7,11 +7,7 @@ import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
-import { AreaChart } from '../components/area-chart';
-import { PriceRange } from '../components/price-range';
-import { Spinner } from '../components/spinner';
-import { Button } from '../components/ui-kit/button';
-import { Error } from '../components/error';
+import { AreaChart, PriceRange, Spinner, Button, Error } from '../components';
 
 import { formatCurrency } from '../utils/formatCurrency';
 

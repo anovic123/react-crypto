@@ -5,7 +5,7 @@ import { TopDataType } from '../common/types/get-top-data';
 
 import { formatCurrency } from '../utils/formatCurrency';
 
-import { Pagination } from './pagination';
+import { Pagination } from './';
 
 import TrendUp from '../assets/images/chart/trend-up.svg';
 import TrendDown from '../assets/images/chart/trend-down.svg';

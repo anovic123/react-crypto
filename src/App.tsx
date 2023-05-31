@@ -4,10 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { Layout } from './layout';
 
-import { DetailsPage } from './pages/details';
-import { HomePage } from './pages/home';
-import { NewsPage } from './pages/news';
-import { TrendingPage } from './pages/trending';
+import { DetailsPage, HomePage, NewsPage, TrendingPage } from './pages';
 
 import { ROUTES } from './utils/router';
 
