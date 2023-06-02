@@ -1,5 +1,8 @@
 import { FC } from 'react';
+
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
+
+import { useMediaQuery } from '../hooks/use-media-query';
 
 import { Button } from './';
 
@@ -10,6 +13,8 @@ interface PaginationProps {
 }
 
 export const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+  const isMobile = useMediaQuery(425);
+
   const handlePageClick = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
@@ -36,8 +41,10 @@ export const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPag
     return pageNumbers;
   };
 
+  const renderPage = isMobile ? currentPage : renderPageNumbers();
+
   return (
-    <div className="flex justify-center mt-4">
+    <div className="flex justify-center mt-4 w-full overflow-x-auto px-5">
       <nav className="flex items-center justify-between gap-3">
         {currentPage > 1 && (
           <Button
@@ -46,7 +53,7 @@ export const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPag
             startIcon={<BsChevronLeft size={20} />}
           />
         )}
-        {renderPageNumbers()}
+        {renderPage}
         {currentPage < totalPages && (
           <Button
             btnStyle="PRIMARY"

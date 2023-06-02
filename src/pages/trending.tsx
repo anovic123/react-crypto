@@ -19,7 +19,6 @@ export const TrendingPage: FC<TrendingPageProps> = ({}) => {
 
   return (
     <div>
-      <h1 className="text-3xl mb-5">Trending Coins</h1>
       {data?.coins.map((el) => (
         <TrendingCard key={el.item.id} {...el.item} />
       ))}

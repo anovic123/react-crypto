@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
-import { LineChart, Spinner } from './';
+import { LineChart } from './';
 
 import { formatCurrency } from '../utils/formatCurrency';
 
@@ -23,10 +23,10 @@ export const TrendingCard: FC<TrendingCardProps> = ({ name, large, id }) => {
   const marketCapChangeColor = data?.market_data?.market_cap_change_24h > 0 ? 'green' : 'red';
 
   return (
-    <div className="border rounded-lg p-2 flex flex-wrap gap-2 justify-between mb-5">
-      <div className="flex gap-5">
+    <div className="border rounded-lg p-2 flex flex-col sm:flex-row gap-2 justify-between mb-5">
+      <div className="flex flex-col sm:flex-row gap-5 ">
         <img src={large} alt={name} width={70} height={50} />
-        <div>
+        <div className="">
           <div
             className="text-2xl cursor-pointer hover:text-red-500"
             onClick={() => navigate(`/details/${id}`)}

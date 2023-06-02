@@ -7,7 +7,7 @@ import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
-import { AreaChart, PriceRange, Spinner, Button, Error } from '../components';
+import { AreaChart, PriceRange, Spinner, Button, Error, Text } from '../components';
 
 import { formatCurrency } from '../utils/formatCurrency';
 import { createMarkup } from '../utils/createMarkup';
@@ -45,10 +45,16 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
   }
 
   const onClickAdd = () => {
-    if (!data || !data.name || !data.market_data?.market_cap?.usd || !data.description?.en || !data.image?.thumb) {
+    if (
+      !data ||
+      !data.name ||
+      !data.market_data?.market_cap?.usd ||
+      !data.description?.en ||
+      !data.image?.thumb
+    ) {
       return;
     }
-  
+
     const item = {
       id: id,
       title: data.name,
@@ -56,13 +62,13 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
       description: data.description.en,
       image: data.image.thumb,
     };
-  
+
     dispatch(addFavorite(item));
   };
 
   return (
     <section className="mt-5 h-full">
-      <div className="mb-1 flex justify-between gap-5">
+      <div className="mb-1 flex flex-wrap justify-between gap-5">
         <div>
           <span className="bg-zinc-900 px-2 py-1 rounded-md">
             Rank #{data?.coingecko_rank || 0}
@@ -99,7 +105,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
               </div>
             )}
           </div>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="flex justify-between gap-3 border-b py-1">
               <span>Market Cap</span>
               <span>{formatCurrency(Number(data?.market_data?.market_cap?.usd))}</span>
@@ -116,6 +122,13 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
               <span>High 24H</span>
               <span>{formatCurrency(Number(data?.market_data?.high_24h?.usd))}</span>
             </div>
+          </div>
+          <div className="my-5 w-full">
+            <PriceRange
+              price={Number(data?.market_data?.current_price?.usd)}
+              high={Number(data?.market_data?.high_24h?.usd)}
+              low={Number(data?.market_data?.low_24h?.usd)}
+            />
           </div>
         </div>
         <div>
@@ -151,7 +164,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             <span>{data?.coingecko_score.toFixed(2)}</span>
           </div>
 
-          <div className="text-xl flex items-center gap-3">
+          <div className="text-xl flex items-center flex-wrap gap-3">
             <Button btnStyle="ORANGE" endIcon={<AiOutlineStar size={20} />} onClick={onClickAdd}>
               Add to favorite
             </Button>
@@ -162,14 +175,9 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           </div>
         </div>
       </div>
-      <div className="mb-14 w-[43%]">
-        <PriceRange
-          price={Number(data?.market_data?.current_price?.usd)}
-          high={Number(data?.market_data?.high_24h?.usd)}
-          low={Number(data?.market_data?.low_24h?.usd)}
-        />
+      <div className="mt-5">
+        <AreaChart id={id} />
       </div>
-      <AreaChart id={id} />
       {data?.description?.en && (
         <p
           className="details-description"

@@ -10,3 +10,4 @@ export * from './spinner';
 export * from './trending-card';
 export * from './crypto-table-list';
 export * from './favorite-card';
+export * from './text';

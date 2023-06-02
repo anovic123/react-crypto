@@ -14,7 +14,7 @@ export const HomeBanner: FC<HomeBannerProps> = ({}) => {
 
   return (
     <div className="mt-10 bg-[#1a2759] pt-5 px-3 rounded-lg">
-      <div className="flex justify-between gap-5">
+      <div className="flex justify-between flex-col md:flex-row gap-5">
         <div className="py-5">
           <h2 className="text-4xl mb-3">
             Be the first to know about
@@ -25,9 +25,11 @@ export const HomeBanner: FC<HomeBannerProps> = ({}) => {
             the know. Explore the world of cryptocurrencies and stay ahead of the curve. Read here
             to stay updated and never miss a beat.
           </p>
-          <Button btnStyle="BLUE" onClick={() => navigate(ROUTES.NEWS)}>Go to news</Button>
+          <Button btnStyle="BLUE" onClick={() => navigate(ROUTES.NEWS)}>
+            Go to news
+          </Button>
         </div>
-        <img src={BG} alt="Banner Background" height={100} />
+        <img src={BG} alt="Banner Background" height={100} width="auto" />
       </div>
     </div>
   );
