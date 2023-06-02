@@ -25,8 +25,8 @@ export const HomePage: FC<HomePageProps> = ({}) => {
 
   return (
     <section className="h-full">
-      <HomeBanner />
       <CryptoTableList title="Cryptocurrency prices by market capitalization" data={data} />
+      <HomeBanner />
     </section>
   );
 };

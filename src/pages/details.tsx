@@ -69,7 +69,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
   return (
     <section className="mt-5 h-full">
       <div className="mb-1 flex flex-wrap justify-between gap-5">
-        <div>
+        <div className="w-full md:w-auto">
           <span className="bg-zinc-900 px-2 py-1 rounded-md">
             Rank #{data?.coingecko_rank || 0}
           </span>
@@ -145,7 +145,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-3 text-xl mb-3">
+          <div className="flex gap-3 text-xl mb-3">
             <div>Links</div>
             <div className="flex flex-wrap items-center gap-3">
               {data?.links?.homepage
