@@ -23,9 +23,14 @@ export const TrendingCard: FC<TrendingCardProps> = ({ name, large, id }) => {
   const marketCapChangeColor = data?.market_data?.market_cap_change_24h > 0 ? 'green' : 'red';
 
   return (
-    <div className="border rounded-lg p-2 flex flex-col sm:flex-row gap-2 justify-between mb-5">
-      <div className="flex flex-col sm:flex-row gap-5 ">
-        <img src={large} alt={name} width={70} height={50} />
+    <div className="border rounded-lg p-2 flex flex-wrap sm:flex-row gap-2 justify-between mb-5">
+      <div className="flex gap-5 ">
+        <div>
+          <img src={large} alt={name} width={70} height={50} />
+          <div className="text-lg text-center" style={{ color: marketCapChangeColor }}>
+            {data?.market_data?.market_cap_change_percentage_24h.toFixed(2)} %
+          </div>
+        </div>
         <div className="">
           <div
             className="text-2xl cursor-pointer hover:text-red-500"
@@ -36,9 +41,6 @@ export const TrendingCard: FC<TrendingCardProps> = ({ name, large, id }) => {
           <div className="font-bold text-[1.12rem]">
             {formatCurrency(data?.market_data?.current_price?.usd)}
           </div>
-        </div>
-        <div className="text-lg" style={{ color: marketCapChangeColor }}>
-          {data?.market_data?.market_cap_change_percentage_24h.toFixed(2)} %
         </div>
       </div>
       <div className="w-[12.5rem] md:w-[21.875rem]">

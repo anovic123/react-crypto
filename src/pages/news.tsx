@@ -12,6 +12,7 @@ const PAGE_SIZE = 10;
 
 export const NewsPage: FC<NewsPageProps> = ({}) => {
   const { data, isLoading, isError } = useGetTopNewsDataQuery();
+  console.log("🚀 ~ file: news.tsx:15 ~ data:", data)
 
   const { currentPage, totalPages, onPageChange, getCurrentPageData } = usePagination(
     data?.Data || [],

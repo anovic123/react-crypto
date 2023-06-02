@@ -3,6 +3,7 @@ import { FC, Fragment } from 'react';
 import { DataType } from '../common/types/get-top-news-data';
 
 import { formatDate } from '../utils/formatDate';
+import { Text } from './text';
 
 interface NewsCardProps extends DataType {}
 
@@ -13,6 +14,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   title,
   published_on,
   body,
+  url,
 }) => {
   const parseStringToArray = (str: string) => {
     const words = str.split('|').slice(0, 3);
@@ -25,15 +27,21 @@ export const NewsCard: FC<NewsCardProps> = ({
   };
 
   return (
-    <article className="flex flex-wrap gap-3 mb-5 border-b py-3">
-      <img src={imageurl} alt={title} className="rounded-sm" height={100} width={100} />
-      <div>
+    <article className="flex flex-wrap gap-5 mb-5 border-b py-3">
+      <img src={imageurl} alt={title} className="rounded-xl" height={170} width={300} />
+      <div className="md:w-[50%]">
         <div className="flex items-center flex-wrap gap-3">
           <span className="text-lg">{source_info.name}</span>
           <span>{formatDate(published_on)}</span>
         </div>
-        <h2 className="font-bold text-xl cursor-pointer hover:text-red-500">{title}</h2>
-        <p className="w-full">{body.length > 150 ? `${body.slice(0, 150)}...` : body}</p>
+        <h2
+          className="font-bold text-xl cursor-pointer hover:text-red-500"
+          onClick={() => window.open(url, '_blank')}
+        >
+          {title}
+        </h2>
+        {/* <p className="w-full">{body.length > 150 ? `${body.slice(0, 150)}...` : body}</p> */}
+        <Text text={body} />
         {tags.length > 2 && (
           <div className="flex items-center flex-wrap gap-2 mt-2">
             <span className="text-lg text-orange-400">Categories:</span>

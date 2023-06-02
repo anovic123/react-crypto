@@ -11,7 +11,7 @@ export const Layout: FC<LayoutProps> = () => {
     <div className="flex h-[100vh] flex-col max-w-7xl m-auto">
       <Header />
       <main className="grow">
-        <Outlet />
+          <Outlet />
       </main>
       <Footer />
       <div className="background-animation">

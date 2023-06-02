@@ -62,7 +62,7 @@ export const Header: FC<HeaderProps> = ({}) => {
         </ul>
       )}
       {isMobile && isMenuOpen && (
-        <ul className="fixed inset-0 flex flex-col justify-center items-center bg-gray-800 pt-20">
+        <ul className="fixed inset-0 flex flex-col justify-center items-center mt-[-5rem] bg-gray-800">
           {headerLinks.map((el) => (
             <li key={`headerLink-${v1()}`} onClick={() => setActiveLink(el.path)}>
               <NavLink
