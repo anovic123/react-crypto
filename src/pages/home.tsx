@@ -10,9 +10,9 @@ export const HomePage: FC<HomePageProps> = ({}) => {
   const { data, isLoading, isError, error } = useGetTopPriceDataQuery();
   console.log('🚀 ~ file: home.tsx:11 ~ data:', data);
 
-  // if (isLoading) {
-  //   return <Spinner />;
-  // }
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   if (isError) {
     // @ts-ignore
@@ -24,11 +24,9 @@ export const HomePage: FC<HomePageProps> = ({}) => {
   }
 
   return (
-    <Preloader>
-      <section className="h-full">
-        <HomeBanner />
-        <CryptoTableList title="Cryptocurrency prices by market capitalization" data={data} />
-      </section>
-    </Preloader>
+    <section className="h-full">
+      <HomeBanner />
+      <CryptoTableList title="Cryptocurrency prices by market capitalization" data={data} />
+    </section>
   );
 };

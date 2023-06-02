@@ -106,19 +106,19 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             )}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex justify-between gap-3 border-b py-1">
+            <div className="flex justify-between w-full gap-3 border-b py-1">
               <span>Market Cap</span>
               <span>{formatCurrency(Number(data?.market_data?.market_cap?.usd))}</span>
             </div>
-            <div className="flex justify-between gap-3 border-b py-1">
+            <div className="flex justify-between w-full gap-3 border-b py-1">
               <span>24 Hour Trading Vol</span>
               <span>{formatCurrency(Number(data?.market_data?.total_volume?.usd))}</span>
             </div>
-            <div className="flex justify-between gap-3 border-b py-1">
+            <div className="flex justify-between w-full gap-3 border-b py-1">
               <span>Low 24H</span>
               <span>{formatCurrency(Number(data?.market_data?.low_24h?.usd))}</span>
             </div>
-            <div className="flex justify-between gap-3 border-b py-1">
+            <div className="flex justify-between w-full gap-3 border-b py-1">
               <span>High 24H</span>
               <span>{formatCurrency(Number(data?.market_data?.high_24h?.usd))}</span>
             </div>
@@ -147,7 +147,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
 
           <div className="flex items-center gap-3 text-xl mb-3">
             <div>Links</div>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {data?.links?.homepage
                 .filter((el) => el.length > 1)
                 .slice(0, 2)
