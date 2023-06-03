@@ -27,7 +27,7 @@ export const PriceRange: FC<PriceRangeProps> = ({ price, low, high }) => {
           style={{ width: `${greenWidth}%` }}
         ></div>
       </div>
-      <div className="flex justify-between gap-3 mt-1 text-[1.1rem]">
+      <div className="flex justify-between gap-3 mt-1 text-[1rem] sm:text-[1.1rem]">
         <span>$ {low.toFixed(3)}</span>
         <span>24H Range</span>
         <span>$ {high.toFixed(3)}</span>

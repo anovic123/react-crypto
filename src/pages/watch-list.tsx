@@ -26,7 +26,7 @@ export const WatchList: FC<WatchListProps> = () => {
 
   if (!favoriteData || favoriteData.length === 0) {
     return (
-      <div className="flex items-center justify-center w-full h-full text-3xl">
+      <div className="flex items-center justify-center w-full h-full text-2xl md:text-3xl">
         Your favorite list is empty
       </div>
     );

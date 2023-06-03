@@ -16,34 +16,30 @@ export const TrendingCard: FC<TrendingCardProps> = ({ name, large, id }) => {
 
   const { data, isLoading, isError } = useGetDetailsDataQuery(id);
 
-  if (isError || !data || data?.market_data?.current_price?.usd < 0.01) {
+  if (isError || !data || !id || data?.market_data?.current_price?.usd < 0.01) {
     return null;
   }
 
   const marketCapChangeColor = data?.market_data?.market_cap_change_24h > 0 ? 'green' : 'red';
 
   return (
-    <div className="border rounded-lg p-2 flex flex-wrap sm:flex-row gap-2 justify-between mb-5">
-      <div className="flex gap-5 ">
-        <div>
+    <div className="border rounded-lg p-2 mb-5">
+      <div className="flex justify-between">
+        <div className="mr-2">
           <img src={large} alt={name} width={70} height={50} />
-          <div className="text-lg text-center" style={{ color: marketCapChangeColor }}>
-            {data?.market_data?.market_cap_change_percentage_24h.toFixed(2)} %
-          </div>
         </div>
-        <div className="">
-          <div
-            className="text-2xl cursor-pointer hover:text-red-500"
-            onClick={() => navigate(`/details/${id}`)}
-          >
-            {name}
-          </div>
-          <div className="font-bold text-[1.12rem]">
-            {formatCurrency(data?.market_data?.current_price?.usd)}
-          </div>
+
+        <div className="grow">
+          <div className="text-2xl cursor-pointer hover:text-red-500" onClick={() => navigate(`/details/${id}`)}>{name}</div>
+          <span className="text-lg text-center" style={{ color: marketCapChangeColor }}>
+            {data?.market_data?.market_cap_change_percentage_24h.toFixed(2)} %
+          </span>
+        </div>
+        <div className="font-bold text-[1.12rem]">
+          {formatCurrency(data?.market_data?.current_price?.usd)}
         </div>
       </div>
-      <div className="w-[12.5rem] md:w-[21.875rem]">
+      <div className="w-full mt-3">
         <LineChart id={id} />
       </div>
     </div>

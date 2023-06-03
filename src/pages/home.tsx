@@ -2,13 +2,12 @@ import { FC } from 'react';
 
 import { useGetTopPriceDataQuery } from '../api/coinApi';
 
-import { CryptoTableList, Error, HomeBanner, Spinner, Preloader, AreaChart } from '../components';
+import { CryptoTableList, Error, HomeBanner, Spinner, Preloader } from '../components';
 
 interface HomePageProps {}
 
 export const HomePage: FC<HomePageProps> = ({}) => {
   const { data, isLoading, isError, error } = useGetTopPriceDataQuery();
-  console.log('🚀 ~ file: home.tsx:11 ~ data:', data);
 
   if (isLoading) {
     return <Spinner />;

@@ -16,7 +16,7 @@ export const HomeBanner: FC<HomeBannerProps> = ({}) => {
     <div className="mt-10 bg-[#1a2759] pt-5 px-3 rounded-lg">
       <div className="flex justify-between items-center flex-col md:flex-row gap-5">
         <div className="py-5">
-          <h2 className="text-4xl mb-3">
+          <h2 className="text-[1.975rem] sm:text-4xl mb-3">
             Be the first to know about
             <strong className="pl-2 text-red-500">crypto news daily</strong>
           </h2>

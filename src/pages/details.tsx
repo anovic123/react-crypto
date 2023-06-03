@@ -7,7 +7,7 @@ import { AiOutlineCopy, AiOutlineStar } from 'react-icons/ai';
 
 import { useGetDetailsDataQuery } from '../api/coinApi';
 
-import { AreaChart, PriceRange, Spinner, Button, Error, Text } from '../components';
+import { AreaChart, PriceRange, Spinner, Button, Error } from '../components';
 
 import { formatCurrency } from '../utils/formatCurrency';
 import { createMarkup } from '../utils/createMarkup';
@@ -28,7 +28,6 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
   }
 
   const { data, isLoading, isError, error } = useGetDetailsDataQuery(id);
-  console.log('🚀 ~ file: details.tsx:28 ~ data:', data);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -58,7 +57,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
     const item = {
       id: id,
       title: data.name,
-      price: data.market_data.market_cap.usd,
+      price: data.market_data.current_price?.usd,
       description: data.description.en,
       image: data.image.thumb,
     };
@@ -132,7 +131,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
           </div>
         </div>
         <div>
-          <div className="text-2xl mb-5">Info</div>
+          <div className="text-2xl my-3">Info</div>
 
           <div className="flex items-center gap-3 text-xl mb-3">
             <div>Api id</div>
@@ -145,12 +144,12 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             </Button>
           </div>
 
-          <div className="flex gap-3 text-xl mb-3">
+          <div className="flex items-center gap-3 text-xl mb-3">
             <div>Links</div>
             <div className="flex flex-wrap items-center gap-3">
               {data?.links?.homepage
                 .filter((el) => el.length > 1)
-                .slice(0, 2)
+                .slice(0, 1)
                 .map((el: string) => (
                   <Button key={el} onClick={() => window.open(el, '_blank')}>
                     {el}

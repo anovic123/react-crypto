@@ -17,11 +17,11 @@ export const NewsCard: FC<NewsCardProps> = ({
   url,
 }) => {
   const parseStringToArray = (str: string) => {
-    const words = str.split('|').slice(0, 3);
-    return words.map((word, i) => (
+    const words = str.split(/\||\//).slice(0, 2);
+    return words.map((word: string, i: number) => (
       <Fragment key={i}>
         <span className="text-cyan-300 font-bold">{word.trim()}</span>
-        {i !== words.length - 1 && <i className="px-2">|</i>}
+        {i !== words.length - 1 && i < 2 && <i className="px-2">|</i>}
       </Fragment>
     ));
   };
@@ -40,7 +40,6 @@ export const NewsCard: FC<NewsCardProps> = ({
         >
           {title}
         </h2>
-        {/* <p className="w-full">{body.length > 150 ? `${body.slice(0, 150)}...` : body}</p> */}
         <Text text={body} />
         {tags.length > 2 && (
           <div className="flex items-center flex-wrap gap-2 mt-2">
