@@ -51,7 +51,7 @@ export const CryptoTableList: FC<CryptoTableListProps> = ({ data, title }) => {
                   ?.map((el: any) => (
                     <tr
                       key={el.id}
-                      className="text-center text-base border-b ease-in duration-300 border-gray-100 hover:bg-[#e6e6e7] hover:text-black cursor-pointer last:border-b-0"
+                      className="text-center text-base border-b ease-in duration-300 border-gray-100 hover:bg-[#e6e6e7] hover:text-black cursor-pointer"
                       onClick={() => navigate(`details/${el.id}`)}
                     >
                       <td className="py-4 px-5 inline-flex gap-3 justify-center items-center text-[1.1812rem]">

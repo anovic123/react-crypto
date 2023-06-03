@@ -4,4 +4,5 @@ export const ROUTES = {
   NEWS: '/news',
   TRENDING: '/trending',
   WATCH_LIST: '/watch-list',
+  NOT_FOUND: '*'
 } as const;

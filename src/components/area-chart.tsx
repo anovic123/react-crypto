@@ -39,7 +39,6 @@ export const AreaChart: FC<AreaChartProps> = ({ id }) => {
   const { data, isError } = useGetMarketChartQuery({ id, days });
 
   // if (isError) {
-  //   // @ts-ignore
   //   return <Error message={error?.data?.error} />;
   // }
 

@@ -27,7 +27,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   };
 
   return (
-    <article className="flex flex-wrap gap-5 mb-5 border-b py-3">
+    <article className="flex flex-col md:flex-row gap-5 mb-5 border-b py-3">
       <img src={imageurl} alt={title} className="rounded-xl" height={170} width={300} />
       <div className="md:w-[50%]">
         <div className="flex items-center flex-wrap gap-3">
