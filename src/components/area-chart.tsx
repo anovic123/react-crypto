@@ -62,7 +62,7 @@ const daysArray = [
 ];
 
 export const AreaChart: FC<AreaChartProps> = ({ id }) => {
-  const [days, setDays] = useState<number>(7);
+  const [days, setDays] = useState<number>(30);
 
   const { data, isError } = useGetMarketChartQuery({ id, days });
 
