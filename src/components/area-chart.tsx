@@ -16,7 +16,7 @@ import moment from 'moment';
 
 import { useGetMarketChartQuery } from '../api/coinApi';
 
-import { Error } from './';
+import { Button, Error } from './';
 
 ChartJS.register(
   CategoryScale,
@@ -83,5 +83,31 @@ export const AreaChart: FC<AreaChartProps> = ({ id }) => {
       },
     ],
   };
-  return <Line options={options} data={values} width={300} height={100} />;
+
+  const handleButtonClick = (numDays: number) => {
+    setDays(numDays);
+  };
+
+  return (
+    <>
+      <Line options={options} data={values} width={300} height={100} />
+      <div className="flex gap-10 justify-center mt-3">
+        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(1)}>
+          24 Hours
+        </Button>
+        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(7)}>
+          7 Days
+        </Button>
+        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(30)}>
+          30 Days
+        </Button>
+        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(90)}>
+          3 Month
+        </Button>
+        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(365)}>
+          1 Year
+        </Button>
+      </div>
+    </>
+  );
 };
