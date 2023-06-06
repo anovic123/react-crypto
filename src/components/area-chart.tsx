@@ -33,6 +33,34 @@ interface AreaChartProps {
   id: string;
 }
 
+const daysArray = [
+  {
+    data: 1,
+    number: 24,
+    time: 'Hours',
+  },
+  {
+    data: 7,
+    number: 7,
+    time: 'Days',
+  },
+  {
+    data: 30,
+    number: 30,
+    time: 'Days',
+  },
+  {
+    data: 90,
+    number: 3,
+    time: 'Month',
+  },
+  {
+    data: 365,
+    number: 1,
+    time: 'Year',
+  },
+];
+
 export const AreaChart: FC<AreaChartProps> = ({ id }) => {
   const [days, setDays] = useState<number>(7);
 
@@ -44,6 +72,7 @@ export const AreaChart: FC<AreaChartProps> = ({ id }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: true,
     scales: {
       x: {
         display: true,
@@ -89,25 +118,19 @@ export const AreaChart: FC<AreaChartProps> = ({ id }) => {
   };
 
   return (
-    <>
-      <Line options={options} data={values} width={300} height={100} />
-      <div className="flex gap-10 justify-center mt-3">
-        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(1)}>
-          24 Hours
-        </Button>
-        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(7)}>
-          7 Days
-        </Button>
-        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(30)}>
-          30 Days
-        </Button>
-        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(90)}>
-          3 Month
-        </Button>
-        <Button btnStyle="ORANGE" onClick={() => handleButtonClick(365)}>
-          1 Year
-        </Button>
+    <div>
+      <Line options={options} data={values} />
+      <div className="flex gap-3 sm:gap-10 justify-center flex-wrap mt-3">
+        {daysArray.map((el) => (
+          <Button
+            key={el.data}
+            btnStyle={el.data === days ? 'RED' : 'ORANGE'}
+            onClick={() => handleButtonClick(el.data)}
+          >
+            {el.number} {el.time}
+          </Button>
+        ))}
       </div>
-    </>
+    </div>
   );
 };

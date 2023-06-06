@@ -144,7 +144,7 @@ export const DetailsPage: FC<DetailsPageProps> = ({}) => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-3 text-xl mb-3">
+          <div className="flex items-center flex-wrap gap-3 text-xl mb-3">
             <div>Links</div>
             <div className="flex flex-wrap items-center gap-3">
               {data?.links?.homepage
