@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import { useState } from 'react';
 
 interface PaginationOptions<T> {
   currentPage: number;

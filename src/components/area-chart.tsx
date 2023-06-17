@@ -34,11 +34,11 @@ interface AreaChartProps {
 }
 
 const daysArray = [
-  {
-    data: 1,
-    number: 24,
-    time: 'Hours',
-  },
+  // {
+  //   data: 1,
+  //   number: 24,
+  //   time: 'Hours',
+  // },
   {
     data: 7,
     number: 7,
